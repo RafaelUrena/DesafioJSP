@@ -17,8 +17,10 @@
         String pass = request.getParameter("clave");
         String passCod = Codificar.codifica(pass);
         int edad = Integer.parseInt(request.getParameter("edad"));
+        String foto = request.getParameter("foto");
+        boolean activo = false;
 
-        ConexionEstatica.AgregarUsuario(user, nom, passCod, edad, ape);
+        ConexionEstatica.AgregarUsuario(user, nom, passCod, edad, ape, foto, activo);
 
         response.sendRedirect("../index.jsp");
     }

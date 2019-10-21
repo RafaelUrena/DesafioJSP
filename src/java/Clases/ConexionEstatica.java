@@ -51,13 +51,13 @@ public class ConexionEstatica {
         }
     }
 
-    public static void AgregarUsuario(String email, String nombre, String clave, int edad, String apellido) throws SQLException {
+    public static void AgregarUsuario(String email, String nombre, String clave, int edad, String apellido, String foto, boolean activo) throws SQLException {
         try {
             conectar();
             
             //Agregamos al usuario con los parametros que recibimos de Registro.jsp.
             
-            String Sentencia = "INSERT INTO USUARIO VALUES (" + 0 + ",'" + email + "', '" + nombre + "', '" + clave + "', " + edad + ", '" + apellido + "');";
+            String Sentencia = "INSERT INTO USUARIO VALUES (" + 0 + ",'" + email + "', '" + nombre + "', '" + clave + "', " + edad + ", '" + apellido + "' ,'" + foto +"'," + activo + ");";
 
             Sentencia_SQL.executeUpdate(Sentencia);
             
