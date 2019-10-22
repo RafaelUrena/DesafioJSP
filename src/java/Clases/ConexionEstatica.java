@@ -89,7 +89,9 @@ public class ConexionEstatica {
         Usuario u = null;
         
         try{
-            String sentencia = "SELECT * FROM USUARIO WHERE nombre =? AND password =?";
+            conectar();
+            
+            String sentencia = "SELECT * FROM USUARIO,ROL_ASIGNADO WHERE correo =? AND password =?";
             PreparedStatement sentenciaPreparada = ConexionEstatica.Conex.prepareStatement(sentencia);
             sentenciaPreparada.setString(1, email);
             sentenciaPreparada.setString(2, pass);
@@ -97,8 +99,17 @@ public class ConexionEstatica {
             
             if (ConexionEstatica.Conj_Registros.next())//Si devuelve true es que existe.
             {
-                u = new Usuario();
+                u = new Usuario(Conj_Registros.getString("correo"),
+                                Conj_Registros.getString("nombre"),
+                                Conj_Registros.getString("apellido"),
+                                Conj_Registros.getInt("edad"),
+                                Conj_Registros.getString("password"),
+                                Conj_Registros.getInt("ID_rol"),
+                                Conj_Registros.getString("foto"),
+                                Conj_Registros.getBoolean("activo"));
             }
+            
+            cerrarBD();
             
         } catch(SQLException ex){
             System.out.println("Error en el acceso a la BD.");
@@ -106,134 +117,64 @@ public class ConexionEstatica {
         
         return u;
     }
-//    
-//    public static Usuario sacarUsuario(String email){
-//        Usuario u = new Usuario();
-//        
-//        try{
-//            conectar();
-//            String Sentencia = "SELECT * FROM USUARIO WHERE Email='"+email+"'";         
-//            
-//            Conj_Registros = Sentencia_SQL.executeQuery(Sentencia);
-//            
-//            while(Conj_Registros.next()){
-//                u.setNombre(Conj_Registros.getString("Nombre"));
-//                u.setEmail(Conj_Registros.getString("Email"));
-//                u.setEdad(Conj_Registros.getInt("Edad"));
-//                u.setClave(Conj_Registros.getString("Contrasena"));
-//                u.setVisitas(Conj_Registros.getInt("Visitas"));
-//                u.setEsAdministrador(Conj_Registros.getBoolean("Administrador"));
-//            }
-//            
-//            cerrarBD();
-//            
-//        }catch(Exception ex){
-//            
-//        }
-//        return u;
-//    }
-//
-//    public static LinkedList sacarUsuarios() {
-//        LinkedList lista = new LinkedList();
-//
-//        try {
-//            ConexionEstatica.conectar();
-//            String Sentencia = "SELECT * FROM USUARIO";
-//
-//            Conj_Registros = Sentencia_SQL.executeQuery(Sentencia);
-//
-//            while (Conj_Registros.next()) {
-//                Usuario u = new Usuario();
-//                u.setNombre(Conj_Registros.getString("Nombre"));
-//                u.setEmail(Conj_Registros.getString("Email"));
-//                u.setEdad(Conj_Registros.getInt("Edad"));
-//                u.setClave(Conj_Registros.getString("Contrasena"));
-//                u.setEsAdministrador(Conj_Registros.getBoolean("Administrador"));
-//                u.setVisitas(Conj_Registros.getInt("Visitas"));
-//
-//                lista.add(u);
-//            }
-//
-//            cerrarBD();
-//        } catch (Exception ex) {
-//
-//        }
-//        return lista;
-//    }
-//
-//    public static void modificarUsuarioEdad(String email, int edad) throws SQLException {
-//
-//        try {
-//            ConexionEstatica.conectar();
-//            String Sentencia = "UPDATE USUARIO SET Edad =" + edad + " WHERE Email= '" + email + "';";
-//
-//            Sentencia_SQL.executeUpdate(Sentencia);
-//
-//            cerrarBD();
-//        } catch (Exception ex) {
-//
-//        }
-//
-//    }
-//
-//    public static void modificarUsuarioPass(String email, String pass) throws SQLException {
-//
-//        try {
-//            ConexionEstatica.conectar();
-//            String Sentencia = "UPDATE USUARIO SET Contrasena ='" + pass + "' WHERE Email= '" + email + "';";
-//
-//            Sentencia_SQL.executeUpdate(Sentencia);
-//
-//            cerrarBD();
-//        } catch (Exception ex) {
-//
-//        }
-//
-//    }
-//    
-//    public static void modificarUsuarioAdmin(String email, int admin) throws SQLException {
-//
-//        try {
-//            ConexionEstatica.conectar();
-//            String Sentencia = "UPDATE USUARIO SET Administrador =" + admin + " WHERE Email= '" + email + "';";
-//
-//            Sentencia_SQL.executeUpdate(Sentencia);
-//
-//            cerrarBD();
-//        } catch (Exception ex) {
-//
-//        }
-//
-//    }
-//    
-//    public static void modificarUsuarioVisitas(String email, int vist) throws SQLException {
-//
-//        try {
-//            ConexionEstatica.conectar();
-//            String Sentencia = "UPDATE USUARIO SET Visitas =" + vist + " WHERE Email= '" + email + "';";
-//
-//            Sentencia_SQL.executeUpdate(Sentencia);
-//
-//            cerrarBD();
-//        } catch (Exception ex) {
-//
-//        }
-//
-//    }
-//    
-//    public static void eliminarUsuario(String email) throws SQLException {
-//
-//        try {
-//            ConexionEstatica.conectar();
-//            String Sentencia = "DELETE FROM USUARIO WHERE Email='" + email + "';";
-//
-//            Sentencia_SQL.executeUpdate(Sentencia);
-//
-//            cerrarBD();
-//        } catch (Exception ex) {
-//
-//        }
-//
-//    }
+    
+    public static Usuario existeUsuario(String email){
+        Usuario u = null;
+        
+        try{
+            conectar();
+            
+            String sentencia = "SELECT * FROM USUARIO,ROL_ASIGNADO WHERE correo =?";
+            PreparedStatement sentenciaPreparada = ConexionEstatica.Conex.prepareStatement(sentencia);
+            sentenciaPreparada.setString(1, email);
+            ConexionEstatica.Conj_Registros = sentenciaPreparada.executeQuery();
+            
+            if (ConexionEstatica.Conj_Registros.next())//Si devuelve true es que existe.
+            {
+                u = new Usuario(Conj_Registros.getString("correo"),
+                                Conj_Registros.getString("nombre"),
+                                Conj_Registros.getString("apellido"),
+                                Conj_Registros.getInt("edad"),
+                                Conj_Registros.getString("password"),
+                                Conj_Registros.getInt("ID_rol"),
+                                Conj_Registros.getString("foto"),
+                                Conj_Registros.getBoolean("activo"));
+            }
+            
+            cerrarBD();
+            
+        } catch(SQLException ex){
+            System.out.println("Error en el acceso a la BD.");
+        }
+        
+        return u;
+    }
+
+    public static LinkedList sacarAulas(){
+        LinkedList lista = new LinkedList();
+        try{
+            conectar();
+            
+            String sentencia = "SELECT * FROM AULA";
+            Conj_Registros = Sentencia_SQL.executeQuery(sentencia);
+            
+            while(Conj_Registros.next()){
+                Aula a = new Aula();
+                
+                a.setID_aula(Conj_Registros.getInt("ID_aula"));
+                a.setNombre(Conj_Registros.getString("nombre"));
+                a.setDescripcion(Conj_Registros.getString("descripcion"));
+                
+                lista.add(a);
+            }
+            
+            
+            cerrarBD();
+            
+        }catch(SQLException ex){
+            System.out.println("Error en el acceso a la BD.");
+        }
+        return lista;
+    }
 
 }

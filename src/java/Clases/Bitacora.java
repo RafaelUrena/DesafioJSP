@@ -22,7 +22,7 @@ public class Bitacora {
         Calendar c = Calendar.getInstance();
         
         
-        linea = c.get(Calendar.DAY_OF_MONTH) + "/" + c.get(Calendar.MONTH) + "/" + c.get(Calendar.YEAR) + "|" + linea;
+        linea = c.getTime() + "|" + c.get(Calendar.DAY_OF_MONTH) + "/" + c.get(Calendar.MONTH) + "/" + c.get(Calendar.YEAR) + "|" + linea;
         
         try {
             fs = new FileWriter(Bitacora.nomFichero,true);

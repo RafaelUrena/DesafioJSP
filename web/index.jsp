@@ -14,7 +14,8 @@
     <body>
         <div id="inde">
             <fieldset>
-                <form name="formu" action="controladores/" method="POST">
+                <form name="formu" action="controladores/ControlPrincipal.jsp" method="POST">
+
                     <label for="email">Usuario </label>
                     <input type="email" name="email" id="email" placeholder="Escriba su email"><br>
 
@@ -23,6 +24,11 @@
 
                     <a href="vistas/Registro.jsp">Registrar</a>
                     <!--<a href="vistas/recuperar.jsp">He olvidado la contraseña</a><br>-->
+                    
+                    <%
+                        if(session.getAttribute("loginincorrecto") != null){%>
+                        <script> alert("<%=session.getAttribute("loginincorrecto")%>");</script>
+                        <%}%>
 
                     <input type="submit" name="aceptar_index" value="Aceptar">
 

@@ -4,6 +4,9 @@
     Author     : rafa
 --%>
 
+<%@page import="Clases.Aula"%>
+<%@page import="java.util.LinkedList"%>
+<%@page import="Clases.ConexionEstatica"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,6 +15,23 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <% 
+            LinkedList <Aula>aulas = ConexionEstatica.sacarAulas();
+        %>
+        <h1>profe</h1>
+        <form name="formu" action="../controladores/ControlPrincipal.jsp" method="POST">
+                    <label for="fecha">Elige fecha </label>
+                    <input type="date" name="fecha" id="fecha" ><br>
+
+                    <label for="aula">Selecciona el aula </label>
+                    <select id="aula">
+                        <% for (Aula a : aulas) { %>
+                        <option value="<%=a.getID_aula()%>" ><%=a.getNombre() %></option>
+                                <% }%>
+                    </select><br>
+
+                    <input type="submit" name="aceptar_profesor" value="Ver cuadrante">
+
+                </form>
     </body>
 </html>

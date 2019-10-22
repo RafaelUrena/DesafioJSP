@@ -35,9 +35,14 @@
                     <input type="password" name="rclave" id="rclave" required="" placeholder="Repita su contraseña" onblur="comprobarContrasena()"><br>
                     
                     <label for="foto">Suba una foto</label>
-                    <input type="file" name="foto" id="foto" accept="image/jpg"><br>
+                    <input type="file" name="foto" id="foto" accept="image/*"><br>
                     
                     <input type="submit" name="subir" id="acept" value="Aceptar">
+                    
+                    <%
+                        if(session.getAttribute("userexiste") != null){%>
+                        <script> alert("<%=session.getAttribute("userexiste")%>");</script>
+                        <%}%>
 
                 </form>
             </fieldset>
