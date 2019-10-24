@@ -8,3 +8,11 @@ and open the template in the editor.
     Author     : rafa
 */
 
+table{
+    border: 1px solid black;
+    text-align: center;
+}
+
+td{
+    border: 1px solid black;
+}

@@ -10,6 +10,7 @@ package Clases;
  * @author rafa
  */
 public class Usuario {
+    private int Id_usuario;
     private String email;
     private String nombre;
     private String apellido;
@@ -20,6 +21,7 @@ public class Usuario {
     private boolean estaActivo;
     
     public Usuario() {
+        this.Id_usuario = 0;
         this.email = "";
         this.nombre = "";
         this.apellido = "";
@@ -29,8 +31,9 @@ public class Usuario {
         this.foto = "";
         this.estaActivo = false;
     }
-    
-    public Usuario(String email, String nombre, String apellido, int edad, String clave, int rol, String foto, boolean estaActivo){
+
+    public Usuario(int Id_usuario, String email, String nombre, String apellido, int edad, String clave, int rol, String foto, boolean estaActivo) {
+        this.Id_usuario = Id_usuario;
         this.email = email;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -40,6 +43,8 @@ public class Usuario {
         this.foto = foto;
         this.estaActivo = estaActivo;
     }
+    
+   
 
     public String getEmail() {
         return email;
@@ -105,11 +110,20 @@ public class Usuario {
         this.estaActivo = estaActivo;
     }
 
-    @Override
-    public String toString() {
-        return "Usuario{" + "email=" + email + ", nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad + ", clave=" + clave + ", rol=" + rol + ", foto=" + foto + ", estaActivo=" + estaActivo + '}';
+    public int getId_usuario() {
+        return Id_usuario;
     }
 
+    public void setId_usuario(int Id_usuario) {
+        this.Id_usuario = Id_usuario;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "Id_usuario=" + Id_usuario + ", email=" + email + ", nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad + ", clave=" + clave + ", rol=" + rol + ", foto=" + foto + ", estaActivo=" + estaActivo + '}';
+    }
+
+    
     
     
     
