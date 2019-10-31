@@ -3,7 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Clases;
+package Modelo;
+
+import java.sql.Blob;
+import java.sql.SQLException;
+import java.util.Base64;
+import java.util.LinkedList;
 
 /**
  *
@@ -16,9 +21,11 @@ public class Usuario {
     private String apellido;
     private int edad;
     private String clave;
-    private int rol;
-    private String foto;
+    private LinkedList<Integer> rol;
+    private byte[] foto;
+    private Blob fotoBlob;
     private boolean estaActivo;
+    private int ID_rol;
     
     public Usuario() {
         this.Id_usuario = 0;
@@ -27,23 +34,36 @@ public class Usuario {
         this.apellido = "";
         this.edad = 0;
         this.clave = "";
-        this.rol = 0;
-        this.foto = "";
         this.estaActivo = false;
+        this.ID_rol = 0;
+        this.rol = new LinkedList();
     }
 
-    public Usuario(int Id_usuario, String email, String nombre, String apellido, int edad, String clave, int rol, String foto, boolean estaActivo) {
+    public Usuario(int Id_usuario,int ID_rol, String email, String nombre, String apellido, int edad, String clave, byte[] foto, boolean estaActivo) {
         this.Id_usuario = Id_usuario;
         this.email = email;
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
         this.clave = clave;
-        this.rol = rol;
         this.foto = foto;
         this.estaActivo = estaActivo;
+        this.ID_rol = ID_rol;
+        this.rol = new LinkedList();
     }
-    
+
+    public Usuario(int Id_usuario,int ID_rol, String email, String nombre, String apellido, int edad, String clave, byte[] foto, Blob fotoBlob, boolean estaActivo) {
+        this.Id_usuario = Id_usuario;
+        this.email = email;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.edad = edad;
+        this.clave = clave;
+        this.foto = foto;
+        this.fotoBlob = fotoBlob;
+        this.estaActivo = estaActivo;
+        this.ID_rol = ID_rol;
+    }
    
 
     public String getEmail() {
@@ -86,20 +106,28 @@ public class Usuario {
         this.apellido = apellido;
     }
 
-    public int getRol() {
-        return rol;
+    public int getID_rol() {
+        return ID_rol;
     }
 
-    public void setRol(int rol) {
-        this.rol = rol;
+    public void setID_rol(int ID_rol) {
+        this.ID_rol = ID_rol;
     }
 
-    public String getFoto() {
+    public byte[] getFoto() {
         return foto;
     }
 
-    public void setFoto(String foto) {
+    public void setFoto(byte[] foto) {
         this.foto = foto;
+    }
+
+    public Blob getFotoBlob() {
+        return fotoBlob;
+    }
+
+    public void setFotoBlob(Blob fotoBlob) {
+        this.fotoBlob = fotoBlob;
     }
 
     public boolean isEstaActivo() {
@@ -118,13 +146,25 @@ public class Usuario {
         this.Id_usuario = Id_usuario;
     }
 
-    @Override
-    public String toString() {
-        return "Usuario{" + "Id_usuario=" + Id_usuario + ", email=" + email + ", nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad + ", clave=" + clave + ", rol=" + rol + ", foto=" + foto + ", estaActivo=" + estaActivo + '}';
+    public int getLength(){
+        return this.rol.size();
     }
 
+    public void agregarRoles(LinkedList role){
+        this.rol = role;
+    }
     
-    
+    public String getFotoimgString() {
+        String image =null;
+        try {
+            byte[] imageBytes = this.fotoBlob.getBytes(1, (int) this.fotoBlob.length());
+            String encodedImage = Base64.getEncoder().encodeToString(imageBytes);
+            image = "data:image/jpg;base64," + encodedImage;
+            
+        } catch (SQLException ex) {
+        }
+        return image;
+    }
     
     
     

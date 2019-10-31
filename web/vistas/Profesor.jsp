@@ -4,11 +4,11 @@
     Author     : rafa
 --%>
 
-<%@page import="Clases.Reserva"%>
-<%@page import="Clases.Franjas"%>
-<%@page import="Clases.Aula"%>
+<%@page import="Modelo.Reserva"%>
+<%@page import="Modelo.Franjas"%>
+<%@page import="Modelo.Aula"%>
 <%@page import="java.util.LinkedList"%>
-<%@page import="Clases.ConexionEstatica"%>
+<%@page import="Modelo.ConexionEstatica"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -29,7 +29,7 @@
             <label for="aula">Selecciona el aula </label>
             <select name="aula" id="aula">
                 <% for (Aula a : aulas) {%>
-                <option value="<%=a.getID_aula()%>" ><%=a.getNombre()%></option>
+                <option value="<%=a.getNombre()%>" ><%=a.getNombre()%></option>
                 <% }%>
             </select><br>
 
@@ -42,8 +42,8 @@
         %>
         <div id="cuadrante">
 
-            <h3>FECHA</h3>
-            <h3>AULA <%=request.getParameter("aula")%></h3>
+            <h3>FECHA <%=session.getAttribute("fecha") %></h3>
+            <h3>AULA <%=session.getAttribute("aula")%></h3>
 
             <table>
                 <thead>
@@ -71,7 +71,7 @@
 
 
             </table>
-
+                <a href="loginAdmin.jsp"><input name="volver" type="button" id="volver" value="Volver" ></a>
         </div>
 
 <%}%>

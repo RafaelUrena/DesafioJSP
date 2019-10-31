@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Clases;
+package Modelo;
 
 /**
  *
@@ -16,6 +16,14 @@ public class Aula {
 
     public Aula() {
     }
+
+    public Aula(int ID_aula, String nombre, String descripcion) {
+        this.ID_aula = ID_aula;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+    }
+    
+    
 
     public int getID_aula() {
         return ID_aula;

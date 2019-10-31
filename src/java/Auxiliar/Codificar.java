@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Clases;
+package Auxiliar;
 
 import org.apache.commons.codec.digest.DigestUtils;
 

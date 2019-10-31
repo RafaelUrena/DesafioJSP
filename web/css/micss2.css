@@ -1,0 +1,269 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 30-oct-2019, 15:34:54
+    Author     : rafa
+*/
+
+
+/* ----------------Reglas generales-------------- */
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: content-box;
+  font-family: sans-serif;
+}
+/*---------------- Menú desplegable---------------- */
+
+ul{
+  display: flex;
+}
+
+li {
+  list-style-type: none;
+  position: relative;
+  width: 250px;
+}
+
+li a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 5px 10px;
+  width: 230px;
+  height: 30px;
+  font-weight: bold;
+  color: white;
+  background-color: #066873;
+}
+
+li a:hover {
+  color: black;
+  background-color: #066873;
+  opacity: 0.5;
+}
+
+nav li ul {
+  display: none;
+  position: absolute;
+  top: 40px;
+}
+
+nav li ul li ul{
+  display: none;
+  position: absolute;
+  left: 140px;
+  top:10px;
+}
+
+nav li:hover ul {
+  display: block;
+}
+
+/* ---------------------Estilos------------------- */
+a {
+  color: #D9A407;
+}
+
+body {
+  background-color: #F2F2F2;
+}
+
+#logo{
+  width: 80px;
+  height: 80px;
+}
+
+h2{
+    color: #fff;
+    text-shadow: 3px 3px 2px #000;
+}
+
+#imguser{
+    width: 100%;
+    height: 100%;
+}
+
+textarea{
+    width: 100%;
+    height: 100vh;
+    border: none;
+    resize: none;
+}
+
+button#acept{
+    background-image: url(../imagenes/modificar.png);
+    background-position: center;
+    background-size: cover;
+    width: 35px;
+    height: 35px;
+}
+
+/*------------------ Medias Query-------------------- */
+
+@media screen and (min-width: 0px) and (max-width: 360px) {
+
+ div.container {
+    display: grid;
+    grid-template-areas:"header header header logo"
+                        "menu menu csn imga"
+                        "fond fond fond fond"
+                        "fond fond fond fond"
+                        "fond fond fond fond"
+                        "foot foot foot foot";
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 2fr repeat(4, 1fr) 2fr;
+    text-align: center;
+
+    height: 100vh;
+  }
+  
+  li {
+  list-style-type: none;
+  position: relative;
+  width: 100px;
+}
+  
+  li a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 5px 10px;
+  width: 100px;
+  height: 35px;
+  font-weight: bold;
+  color: white;
+  background-color: #066873;
+}
+
+li a:hover {
+  color: white;
+  background-color: #066873;
+  opacity: 0.9;
+}
+
+}
+
+@media screen and (min-width: 360px) and (max-width: 768px) {
+
+  div.container {
+    display: grid;
+    grid-template-areas:"header header header logo"
+                        "menu menu csn imga"
+                        "fond fond fond fond"
+                        "fond fond fond fond"
+                        "fond fond fond fond"
+                        "foot foot foot foot";
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 2fr repeat(4, 1fr) 2fr;
+    text-align: center;
+
+    height: 100vh;
+  }
+
+}
+
+@media screen and (min-width: 360px) and (orientation: landscape){
+
+  div.container {
+    display: grid;
+    grid-template-areas:"header header header logo"
+                        "menu menu csn imga"
+                        "fond fond fond fond"
+                        "fond fond fond fond"
+                        "fond fond fond fond"
+                        "foot foot foot foot";
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 2fr repeat(4, 1fr) 2fr;
+    text-align: center;
+
+    height: 100vh;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1280px) {
+  div.container {
+    display: grid;
+    grid-template-areas:"header header header logo"
+                        "menu menu csn imga"
+                        "fond fond fond fond"
+                        "fond fond fond fond"
+                        "fond fond fond fond"
+                        "foot foot foot foot";
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 2fr repeat(4, 1fr) 2fr;
+    text-align: center;
+
+
+    height: 100vh;
+  }
+
+}
+
+@media screen and (min-width: 1280px) and (max-width: 1980px) {
+  div.container {
+    display: grid;
+    grid-template-areas:"header header header logo"
+                        "menu menu csn imga"
+                        "fond fond fond fond"
+                        "fond fond fond fond"
+                        "fond fond fond fond"
+                        "foot foot foot foot";
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 2fr repeat(4, 1fr) 2fr;
+    text-align: center;
+
+
+    height: 100vh;
+  }
+
+}
+
+/* --------------GRID areas y estilos--------------- */
+div.box1 {
+  grid-area: header;
+  background-color: #066873;
+  border-bottom: 1px solid black;
+  box-shadow: 2px 2px 2px black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div.img{
+  grid-area: logo;
+  background-color: #066873;
+  border-bottom: 1px solid black;
+  box-shadow: 2px 2px 2px black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+div.box2 {
+  grid-area: menu;
+}
+
+div.box3 {
+  grid-area: csn;
+}
+
+div.box4 {
+  grid-area: imga;
+}
+
+div.box5 {
+  grid-area: fond;
+}
+
+div.box7 {
+  grid-area: foot;
+  background-color: #066873;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid black;
+  box-shadow: 3px 3px 3px 5px black;
+}

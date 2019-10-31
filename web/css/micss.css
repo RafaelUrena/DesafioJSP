@@ -8,11 +8,267 @@ and open the template in the editor.
     Author     : rafa
 */
 
+/* ----------------Reglas generales-------------- */
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: content-box;
+  font-family: sans-serif;
+}
+
 table{
     border: 1px solid black;
     text-align: center;
 }
 
+
+/* -----------------Estilos input ------------------*/
+
+input[type="email"] {
+  width: 100%;
+  height: 50px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px solid grey;
+}
+
+input[type="password"] {
+  width: 100%;
+  height: 50px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px solid grey;
+}
+
+input:focus {
+  border-color: #D9A407;
+  background-color: #F2F2F2;
+  color: #D9A407;
+}
+
+input#enviar {
+  background-color: #D9A407;
+  border-radius: 15px;
+  border-color: #D9A407;
+  color: black;
+  width: 60%;
+  font-weight: bold;
+}
+
+
+/* ---------------------Estilos------------------- */
+a {
+  color: #D9A407;
+}
+
+body {
+  background-color: #F2F2F2;
+}
+
+#logo{
+  width: 80px;
+  height: 80px;
+}
+
 td{
     border: 1px solid black;
+}
+
+h2{
+    color: #fff;
+    text-shadow: 3px 3px 2px #000;
+}
+
+
+
+/*------------------ Medias Query-------------------- */
+
+@media screen and (min-width: 0px) and (max-width: 360px) {
+
+  div.container {
+    display: grid;
+    grid-template-areas:
+      "header header header logo"
+      "vac vac vac vac"
+      "vac1 form1 form1 vac2"
+      "vac1 form2 form2 vac2"
+      "vac1 form3 form3 vac2"
+      "vac1 enl1 enl1 vac2"
+      "vac1 enl2 enl2 vac2"
+      "vac3 vac3 vac3 vac3"
+      "foot foot foot foot";
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 2fr repeat(7, 1fr) 2fr;
+    text-align: center;
+
+    grid-row-gap: 20px;
+
+    height: 100vh;
+  }
+
+  input#enviar {
+    background-color: #D9A407;
+    border-radius: 15px;
+    border-color: #D9A407;
+    color: black;
+    width: 100%;
+    font-weight: bold;
+  }
+}
+
+@media screen and (min-width: 360px) and (max-width: 768px) {
+
+  div.container {
+    display: grid;
+    grid-template-areas:
+      "header header header logo"
+      "vac vac vac vac"
+      "vac1 form1 form1 vac2"
+      "vac1 form2 form2 vac2"
+      "vac1 form3 form3 vac2"
+      "vac1 enl1 enl1 vac2"
+      "vac1 enl2 enl2 vac2"
+      "vac3 vac3 vac3 vac3"
+      "foot foot foot foot";
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 2fr repeat(7, 1fr) 2fr;
+    text-align: center;
+
+    grid-row-gap: 20px;
+
+    height: 100vh;
+  }
+
+  input#enviar {
+    background-color: #D9A407;
+    border-radius: 15px;
+    border-color: #D9A407;
+    color: black;
+    width: 90%;
+    font-weight: bold;
+  }
+}
+
+@media screen and (min-width: 360px) and (orientation: landscape){
+
+  div.container {
+    display: grid;
+    grid-template-areas:
+      "header header header logo"
+      "vac1 form1 form1 vac2"
+      "vac1 form2 form2 vac2"
+      "vac1 form3 form3 vac2"
+      "vac1 enl1 enl1 vac2"
+      "vac1 enl2 enl2 vac2"
+      "foot foot foot foot";
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 2fr repeat(5, 1fr) 2fr;
+    text-align: center;
+
+    grid-row-gap: 20px;
+
+    height: 100vh;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1280px) {
+  div.container {
+    display: grid;
+    grid-template-areas:
+      "header header header logo"
+      "vac vac vac vac"
+      "vac1 form1 form1 vac2"
+      "vac1 form2 form2 vac2"
+      "vac1 form3 form3 vac2"
+      "vac1 enl1 enl1 vac2"
+      "vac1 enl2 enl2 vac2"
+      "vac3 vac3 vac3 vac3"
+      "foot foot foot foot";
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 2fr repeat(7, 1fr) 2fr;
+    text-align: center;
+
+    grid-row-gap: 20px;
+
+    height: 100vh;
+  }
+
+}
+
+@media screen and (min-width: 1280px) and (max-width: 1980px) {
+  div.container {
+    display: grid;
+    grid-template-areas:
+      "header header header logo"
+      "vac vac vac vac"
+      "vac1 form1 form1 vac2"
+      "vac1 form2 form2 vac2"
+      "vac1 form3 form3 vac2"
+      "vac1 enl1 enl1 vac2"
+      "vac1 enl2 enl2 vac2"
+      "vac3 vac3 vac3 vac3"
+      "foot foot foot foot";
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 2fr repeat(7, 1fr) 2fr;
+    text-align: center;
+
+    grid-row-gap: 20px;
+
+    height: 100vh;
+  }
+
+}
+
+/* --------------GRID areas y estilos--------------- */
+div.box1 {
+  grid-area: header;
+  background-color: #066873;
+  border-bottom: 1px solid black;
+  box-shadow: 2px 2px 2px black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div.img{
+  grid-area: logo;
+  background-color: #066873;
+  border-bottom: 1px solid black;
+  box-shadow: 2px 2px 2px black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+div.box2 {
+  grid-area: form1;
+}
+
+div.box3 {
+  grid-area: form2;
+}
+
+div.box4 {
+  grid-area: form3;
+}
+
+div.box5 {
+  grid-area: enl1;
+}
+
+div.box6 {
+  grid-area: enl2;
+}
+
+div.box7 {
+  grid-area: foot;
+  background-color: #066873;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid black;
+  box-shadow: 3px 3px 3px 5px black;
 }

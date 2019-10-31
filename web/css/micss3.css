@@ -1,0 +1,39 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 29-oct-2019, 8:50:59
+    Author     : rafa
+*/
+
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
+}
+
+button#delete{
+    background-image: url(../imagenes/basura.png);
+    background-position: center;
+    background-size: cover;
+    width: 35px;
+    height: 35px;
+}
+
+button#modify{
+    background-image: url(../imagenes/modificar.png);
+    background-position: center;
+    background-size: cover;
+    width: 35px;
+    height: 35px;
+}
+
+button#add{
+    background-image: url(../imagenes/add.png);
+    background-position: center;
+    background-size: cover;
+    width: 35px;
+    height: 35px;
+}

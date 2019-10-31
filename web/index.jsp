@@ -9,31 +9,54 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <link type="text/css" rel="stylesheet" href="css/micss.css">
+        <title>Aula Virtual</title>
     </head>
     <body>
         <div id="inde">
-            <fieldset>
+            
                 <form name="formu" action="controladores/ControlPrincipal.jsp" method="POST">
+                    <div class="container">
 
-                    <label for="email">Usuario </label>
-                    <input type="email" name="email" id="email" placeholder="Escriba su email"><br>
+                        <div class="box1">
+                            <h2>Aula Virtual</h2>
+                        </div>
 
-                    <label for="pass">Contraseña </label>
-                    <input type="password" name="pass" id="pass" placeholder="Escriba su contraseña"><br>
+                        <div class="img">
+                            <img id="logo" src="imagenes/logo.png" alt="logo" class="img">
+                        </div>
 
-                    <a href="vistas/Registro.jsp">Registrar</a>
-                    <!--<a href="vistas/recuperar.jsp">He olvidado la contraseña</a><br>-->
-                    
+                        <div class="box2">
+                            <input type="email" name="email" id="email" placeholder="Escriba su email">
+                        </div>
+
+                        <div class="box3">
+                            <input type="password" name="pass" id="pass" placeholder="Escriba su contraseña">
+                        </div>
+
+                        <div class="box4">
+                            <input type="submit" id="enviar" name="aceptar_index" value="Aceptar">
+                        </div>
+
+                        <div class="box5">
+                            <a href="vistas/Registro.jsp">Registrar</a>
+                        </div>
+
+                        <div class="box6">
+                            <a href="vistas/recuperar.jsp">He olvidado la contraseña</a>
+                        </div>
+
+                        <div class="box7">
+                            <p>Todos los derechos reservados</p>
+                        </div>
+
+                    </div>        
+
                     <%
-                        if(session.getAttribute("loginincorrecto") != null){%>
-                        <script> alert("<%=session.getAttribute("loginincorrecto")%>");</script>
-                        <%}%>
-
-                    <input type="submit" name="aceptar_index" value="Aceptar">
-
+                        if (session.getAttribute("loginincorrecto") != null) {%>
+                    <script> alert("<%=session.getAttribute("loginincorrecto")%>");</script>
+                    <%}%>
                 </form>
-            </fieldset>
         </div>
     </body>
 </html>
